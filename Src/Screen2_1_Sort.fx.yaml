@@ -1,0 +1,615 @@
+"Screen2_1_Sort As screen.'phoneLayout_FluidGridWithHeaderPageLayout_ver3.0'":
+    OnVisible: |+
+        =ClearCollect(
+            Header,
+            {
+                Description: "Leave Description",
+                LeaveType: "Leave Type",
+                SelectType: "Planned / UnPlanned",
+                Manager: "Manager",
+                SD: "Start Date",
+                ED: "End Date",
+                Days: "No Of Days",
+                LeaveStatus: "Leave Status",
+                Dept: "Department",
+                Action: "Action"
+            }
+        );
+        UpdateContext({SortColumnPref:"TextColumn"});
+        ClearCollect(
+            LeaveType,
+            {Value:"All Leaves"},
+            Choices([@Leaves].Leave_Type)
+        );
+        ClearCollect(
+            DeptChoices,
+            {Value: "All Departments"},
+            Choices([@Leaves].Department)
+        );
+        ClearCollect(
+            StatusChoices,
+            {Value: "All Statuses"},
+            Choices([@Leaves].Leave_Status)
+        );
+        ClearCollect(
+            SelectChoices,
+            {Value: "All Types"},
+            Choices([@Leaves].Select_Type)
+        );
+        
+
+    RectQuickActionBar1_2 As rectangle:
+        Height: =88
+        Width: =Parent.Width
+        ZIndex: =1
+
+    LblAppName1_2 As label:
+        Align: =Align.Center
+        Font: =Font.'Lato Black'
+        Height: =88
+        Size: =32
+        Text: ="View My Application"
+        Width: =Parent.Width
+        ZIndex: =2
+
+    Canvas1_2 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =RectQuickActionBar1_2.Y + RectQuickActionBar1_2.Height
+        ZIndex: =3
+
+        DataCard1_2 As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height - 100
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            Gallery3_2 As gallery.galleryVertical:
+                '#CopilotOverlayLabel': ="Filtered"
+                DelayItemLoading: =true
+                Height: =101
+                Items: =Header
+                Layout: =Layout.Vertical
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplateSize: =67
+                Width: =1287
+                X: =32
+                Y: =92
+                ZIndex: =2
+
+                Label20_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Description
+                    Y: =27
+                    ZIndex: =3
+
+                Label21_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.SelectType
+                    Width: =120
+                    X: =Label20_2.X+Label20_2.Width
+                    Y: =27
+                    ZIndex: =4
+
+                Label22_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.LeaveStatus
+                    Width: =120
+                    X: =281
+                    Y: =27
+                    ZIndex: =5
+
+                Label23_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Manager
+                    Width: =120
+                    X: =412
+                    Y: =27
+                    ZIndex: =6
+
+                Label24_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.SD
+                    Width: =80
+                    X: =532
+                    Y: =27
+                    ZIndex: =7
+
+                Label25_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.ED
+                    Width: =80
+                    X: =635
+                    Y: =27
+                    ZIndex: =8
+
+                Label26_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Days
+                    Width: =80
+                    X: =722
+                    Y: =27
+                    ZIndex: =9
+
+                Label27_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.LeaveType
+                    X: =810
+                    Y: =27
+                    ZIndex: =10
+
+                Label28_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Dept
+                    X: =960
+                    Y: =27
+                    ZIndex: =11
+
+                Label29_2 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Action
+                    Width: =125
+                    X: =1127
+                    Y: =27
+                    ZIndex: =12
+
+            Icon1 As icon.ArrowsUpDown:
+                Height: =36
+                Icon: =Icon.Sort
+                OnSelect: |
+                    =UpdateContext(
+                        {
+                            SortColumnPref: "TextColumn",
+                            SortColumnName: "Title",
+                            SortColumnType: !SortColumnType
+                        }
+                    )
+                Width: =49
+                X: =131
+                Y: =124
+                ZIndex: =3
+
+            Icon1_1 As icon:
+                Height: =36
+                Icon: =Icon.Sort
+                OnSelect: |-
+                    =UpdateContext(
+                        {
+                            SortColumnPref: "Leave Type PL",
+                            SortdescendingLeaveTypePL: !SortdescendingLeaveTypePL
+                        }
+                    )
+                Width: =49
+                X: =271
+                Y: =124
+                ZIndex: =4
+
+            Icon1_2 As icon:
+                Height: =36
+                Icon: =Icon.Sort
+                OnSelect: |-
+                    =UpdateContext(
+                        {
+                            SortColumnPref: "Approver",
+                            SortdescendingApprover: !SortdescendingApprover
+                        }
+                    )
+                Width: =49
+                X: =416
+                Y: =124
+                ZIndex: =5
+
+            Icon1_3 As icon:
+                Height: =36
+                Icon: =Icon.Sort
+                OnSelect: |-
+                    =UpdateContext(
+                        {
+                            SortColumnPref: "Manager",
+                            SortdescendingManager: !SortdescendingManager
+                        }
+                    )
+                Width: =49
+                X: =528
+                Y: =124
+                ZIndex: =6
+
+            Icon1_4 As icon:
+                Height: =36
+                Icon: =Icon.Sort
+                OnSelect: |-
+                    =UpdateContext(
+                        {
+                            SortColumnPref: "Start Date",
+                            SortdescendingStartDate: !SortdescendingStartDate
+                        }
+                    )
+                Width: =49
+                X: =610
+                Y: =124
+                ZIndex: =7
+
+            Icon1_5 As icon:
+                Height: =36
+                Icon: =Icon.Sort
+                OnSelect: |-
+                    =UpdateContext(
+                        {
+                            SortColumnPref: "End Date",
+                            SortdescendingEndDate: !SortdescendingEndDate
+                        }
+                    )
+                Width: =49
+                X: =712
+                Y: =124
+                ZIndex: =8
+
+            Icon1_6 As icon:
+                Height: =36
+                Icon: =Icon.Sort
+                OnSelect: |-
+                    =UpdateContext(
+                        {
+                            SortColumnPref: "Days",
+                            SortdescendingDays: !SortdescendingDays
+                        }
+                    )
+                Width: =49
+                X: =807
+                Y: =124
+                ZIndex: =9
+
+            Icon1_7 As icon:
+                Height: =36
+                Icon: =Icon.Sort
+                OnSelect: |-
+                    =UpdateContext(
+                        {
+                            SortColumnPref: "Leave Type",
+                            SortdescendingLeaveType: !SortdescendingLeaveType
+                        }
+                    )
+                Width: =49
+                X: =934
+                Y: =124
+                ZIndex: =10
+
+            Icon1_8 As icon:
+                Height: =36
+                Icon: =Icon.Sort
+                OnSelect: |-
+                    =UpdateContext(
+                        {
+                            SortColumnPref: "Department",
+                            SortdescendingDepartment: !SortdescendingDepartment
+                        }
+                    )
+                Width: =49
+                X: =1091
+                Y: =124
+                ZIndex: =11
+
+            Gallery1_2 As gallery.galleryVertical:
+                '#CopilotOverlayLabel': ="Filtered"
+                DelayItemLoading: =true
+                Height: =368
+                Items: |
+                    =Switch(
+                        SortColumnPref,
+                    
+                        // Default text column
+                        "TextColumn",
+                        SortByColumns(
+                            Filter(
+                                Leaves,
+                    
+                                // Leave Type filter
+                                If(
+                                    DropdownLeave_Type_1.Selected.Value = "All Leaves",
+                                    true,
+                                    Leave_Type.Value = DropdownLeave_Type_1.Selected.Value
+                                ),
+                    
+                                // Department filter
+                                If(
+                                    DropdownDepartment_1.Selected.Value = "All Departments",
+                                    true,
+                                    Department.Value = DropdownDepartment_1.Selected.Value
+                                ),
+                    
+                                // Leave Status filter
+                                If(
+                                    DropdownLeave_Status_1.Selected.Value = "All Statuses",
+                                    true,
+                                    Leave_Status.Value = DropdownLeave_Status_1.Selected.Value
+                                ),
+                    
+                                // Planned/Unplanned
+                                If(
+                                    DropdownSelect_Type_1.Selected.Value = "All Types",
+                                    true,
+                                    DropdownSelect_Type_1.Selected.Value = Select_Type.Value
+                                ),
+                    
+                                // Search box
+                                If(
+                                    IsBlank(TextInputSearch_1.Text),
+                                    true,
+                                    StartsWith(Title, TextInputSearch_1.Text) 
+                                    || StartsWith(Manager.DisplayName, TextInputSearch_1.Text)
+                                ),
+                    
+                                // Current user filter
+                                'Created By'.Email = User().Email
+                            ),
+                            SortColumnName,
+                            If(SortColumnType, SortOrder.Ascending, SortOrder.Descending)
+                        ),
+                    
+                        // Leave Type PL
+                        "Leave Type PL",
+                        Sort(
+                            Filter(
+                                Leaves,
+                                If(DropdownLeave_Type_1.Selected.Value = "All Leaves", true, Leave_Type.Value = DropdownLeave_Type_1.Selected.Value),
+                                If(DropdownDepartment_1.Selected.Value = "All Departments", true, Department.Value = DropdownDepartment_1.Selected.Value),
+                                If(DropdownLeave_Status_1.Selected.Value = "All Statuses", true, Leave_Status.Value = DropdownLeave_Status_1.Selected.Value),
+                                If(DropdownSelect_Type_1.Selected.Value = "All Types", true, DropdownSelect_Type_1.Selected.Value = Select_Type.Value),
+                                If(IsBlank(TextInputSearch_1.Text), true, StartsWith(Title, TextInputSearch_1.Text) || StartsWith(Manager.DisplayName, TextInputSearch_1.Text)),
+                                'Created By'.Email = User().Email
+                            ),
+                            Select_Type.Value,
+                            If(SortdescendingLeaveTypePL, SortOrder.Ascending, SortOrder.Descending)
+                        ),
+                    
+                        // Approver
+                        "Approver",
+                        Sort(
+                            Filter(
+                                Leaves,
+                                If(DropdownLeave_Type_1.Selected.Value = "All Leaves", true, Leave_Type.Value = DropdownLeave_Type_1.Selected.Value),
+                                If(DropdownDepartment_1.Selected.Value = "All Departments", true, Department.Value = DropdownDepartment_1.Selected.Value),
+                                If(DropdownLeave_Status_1.Selected.Value = "All Statuses", true, Leave_Status.Value = DropdownLeave_Status_1.Selected.Value),
+                                If(DropdownSelect_Type_1.Selected.Value = "All Types", true, DropdownSelect_Type_1.Selected.Value = Select_Type.Value),
+                                If(IsBlank(TextInputSearch_1.Text), true, StartsWith(Title, TextInputSearch_1.Text) || StartsWith(Manager.DisplayName, TextInputSearch_1.Text)),
+                                'Created By'.Email = User().Email
+                            ),
+                            Leave_Status.Value,
+                            If(SortdescendingApprover, SortOrder.Ascending, SortOrder.Descending)
+                        ),
+                    
+                        // Manager
+                        "Manager",
+                        Sort(
+                            Filter(
+                                Leaves,
+                                If(DropdownLeave_Type_1.Selected.Value = "All Leaves", true, Leave_Type.Value = DropdownLeave_Type_1.Selected.Value),
+                                If(DropdownDepartment_1.Selected.Value = "All Departments", true, Department.Value = DropdownDepartment_1.Selected.Value),
+                                If(DropdownLeave_Status_1.Selected.Value = "All Statuses", true, Leave_Status.Value = DropdownLeave_Status_1.Selected.Value),
+                                If(DropdownSelect_Type_1.Selected.Value = "All Types", true, DropdownSelect_Type_1.Selected.Value = Select_Type.Value),
+                                If(IsBlank(TextInputSearch_1.Text), true, StartsWith(Title, TextInputSearch_1.Text) || StartsWith(Manager.DisplayName, TextInputSearch_1.Text)),
+                                'Created By'.Email = User().Email
+                            ),
+                            Manager.DisplayName,
+                            If(SortdescendingManager, SortOrder.Ascending, SortOrder.Descending)
+                        ),
+                    
+                        // Start Date
+                        "Start Date",
+                        Sort(
+                            Filter(
+                                Leaves,
+                                If(DropdownLeave_Type_1.Selected.Value = "All Leaves", true, Leave_Type.Value = DropdownLeave_Type_1.Selected.Value),
+                                If(DropdownDepartment_1.Selected.Value = "All Departments", true, Department.Value = DropdownDepartment_1.Selected.Value),
+                                If(DropdownLeave_Status_1.Selected.Value = "All Statuses", true, Leave_Status.Value = DropdownLeave_Status_1.Selected.Value),
+                                If(DropdownSelect_Type_1.Selected.Value = "All Types", true, DropdownSelect_Type_1.Selected.Value = Select_Type.Value),
+                                If(IsBlank(TextInputSearch_1.Text), true, StartsWith(Title, TextInputSearch_1.Text) || StartsWith(Manager.DisplayName, TextInputSearch_1.Text)),
+                                'Created By'.Email = User().Email
+                            ),
+                            Start_Date,
+                            If(SortdescendingStartDate, SortOrder.Ascending, SortOrder.Descending)
+                        ),
+                    
+                        // End Date
+                        "End Date",
+                        Sort(
+                            Filter(
+                                Leaves,
+                                If(DropdownLeave_Type_1.Selected.Value = "All Leaves", true, Leave_Type.Value = DropdownLeave_Type_1.Selected.Value),
+                                If(DropdownDepartment_1.Selected.Value = "All Departments", true, Department.Value = DropdownDepartment_1.Selected.Value),
+                                If(DropdownLeave_Status_1.Selected.Value = "All Statuses", true, Leave_Status.Value = DropdownLeave_Status_1.Selected.Value),
+                                If(DropdownSelect_Type_1.Selected.Value = "All Types", true, DropdownSelect_Type_1.Selected.Value = Select_Type.Value),
+                                If(IsBlank(TextInputSearch_1.Text), true, StartsWith(Title, TextInputSearch_1.Text) || StartsWith(Manager.DisplayName, TextInputSearch_1.Text)),
+                                'Created By'.Email = User().Email
+                            ),
+                            End_Date,
+                            If(SortdescendingEndDate, SortOrder.Ascending, SortOrder.Descending)
+                        ),
+                    
+                        // Days
+                        "Days",
+                        Sort(
+                            Filter(
+                                Leaves,
+                                If(DropdownLeave_Type_1.Selected.Value = "All Leaves", true, Leave_Type.Value = DropdownLeave_Type_1.Selected.Value),
+                                If(DropdownDepartment_1.Selected.Value = "All Departments", true, Department.Value = DropdownDepartment_1.Selected.Value),
+                                If(DropdownLeave_Status_1.Selected.Value = "All Statuses", true, Leave_Status.Value = DropdownLeave_Status_1.Selected.Value),
+                                If(DropdownSelect_Type_1.Selected.Value = "All Types", true, DropdownSelect_Type_1.Selected.Value = Select_Type.Value),
+                                If(IsBlank(TextInputSearch_1.Text), true, StartsWith(Title, TextInputSearch_1.Text) || StartsWith(Manager.DisplayName, TextInputSearch_1.Text)),
+                                'Created By'.Email = User().Email
+                            ),
+                            'No Of Days',
+                            If(SortdescendingDays, SortOrder.Ascending, SortOrder.Descending)
+                        ),
+                    
+                        // Leave Type
+                        "Leave Type",
+                        Sort(
+                            Filter(
+                                Leaves,
+                                If(DropdownLeave_Type_1.Selected.Value = "All Leaves", true, Leave_Type.Value = DropdownLeave_Type_1.Selected.Value),
+                                If(DropdownDepartment_1.Selected.Value = "All Departments", true, Department.Value = DropdownDepartment_1.Selected.Value),
+                                If(DropdownLeave_Status_1.Selected.Value = "All Statuses", true, Leave_Status.Value = DropdownLeave_Status_1.Selected.Value),
+                                If(DropdownSelect_Type_1.Selected.Value = "All Types", true, DropdownSelect_Type_1.Selected.Value = Select_Type.Value),
+                                If(IsBlank(TextInputSearch_1.Text), true, StartsWith(Title, TextInputSearch_1.Text) || StartsWith(Manager.DisplayName, TextInputSearch_1.Text)),
+                                'Created By'.Email = User().Email
+                            ),
+                            Leave_Type.Value,
+                            If(SortdescendingLeaveType, SortOrder.Ascending, SortOrder.Descending)
+                        ),
+                    
+                        // Department
+                        "Department",
+                        Sort(
+                            Filter(
+                                Leaves,
+                                If(DropdownLeave_Type_1.Selected.Value = "All Leaves", true, Leave_Type.Value = DropdownLeave_Type_1.Selected.Value),
+                                If(DropdownDepartment_1.Selected.Value = "All Departments", true, Department.Value = DropdownDepartment_1.Selected.Value),
+                                If(DropdownLeave_Status_1.Selected.Value = "All Statuses", true, Leave_Status.Value = DropdownLeave_Status_1.Selected.Value),
+                                If(DropdownSelect_Type_1.Selected.Value = "All Types", true, DropdownSelect_Type_1.Selected.Value = Select_Type.Value),
+                                If(IsBlank(TextInputSearch_1.Text), true, StartsWith(Title, TextInputSearch_1.Text) || StartsWith(Manager.DisplayName, TextInputSearch_1.Text)),
+                                'Created By'.Email = User().Email
+                            ),
+                            Department.Value,
+                            If(SortdescendingDepartment, SortOrder.Ascending, SortOrder.Descending)
+                        )
+                    )
+                Layout: =Layout.Vertical
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplateSize: =94
+                Width: =1298
+                X: =32
+                Y: =181
+                ZIndex: =13
+
+                Label1_2 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Title
+                    Y: =40
+                    ZIndex: =14
+
+                Label2_2 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Select_Type.Value
+                    X: =150
+                    Y: =40
+                    ZIndex: =15
+
+                Label3_2 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Leave_Status.Value
+                    X: =284
+                    Y: =40
+                    ZIndex: =16
+
+                Label5_2 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Manager.DisplayName
+                    X: =424
+                    Y: =40
+                    ZIndex: =17
+
+                Label4_2 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Start_Date
+                    X: =516
+                    Y: =40
+                    ZIndex: =18
+
+                Label6_2 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.End_Date
+                    X: =631
+                    Y: =40
+                    ZIndex: =19
+
+                Label7_2 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.'No Of Days'
+                    X: =749
+                    Y: =40
+                    ZIndex: =20
+
+                Label8_2 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Leave_Type.Value
+                    X: =849
+                    Y: =40
+                    ZIndex: =21
+
+                Label9_2 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Department.Value
+                    X: =999
+                    Y: =40
+                    ZIndex: =22
+
+                Button4_2 As button:
+                    OnSelect: =Select(Parent)
+                    Text: ="Edit"
+                    X: =1097
+                    Y: =40
+                    ZIndex: =23
+
+            TextInputSearch_1 As text:
+                Default: =
+                HintText: ="Search Description"
+                X: =40
+                Y: =40
+                ZIndex: =14
+
+            DropdownLeave_Type_1 As dropdown:
+                Items: =LeaveType
+                Width: =200
+                X: =387
+                Y: =40
+                ZIndex: =15
+
+            DropdownSelect_Type_1 As dropdown:
+                Items: =SelectChoices
+                Width: =200
+                X: =614
+                Y: =40
+                ZIndex: =16
+
+            DropdownDepartment_1 As dropdown:
+                Items: =DeptChoices
+                Width: =200
+                X: =846
+                Y: =40
+                ZIndex: =17
+
+            DropdownLeave_Status_1 As dropdown:
+                Items: =StatusChoices
+                Width: =200
+                X: =1088
+                Y: =40
+                ZIndex: =18
+

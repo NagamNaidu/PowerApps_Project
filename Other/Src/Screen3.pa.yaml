@@ -1,0 +1,144 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Screen3:
+    Properties:
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+    Children:
+      - RectQuickActionBar2:
+          Control: Rectangle@2.3.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(56, 96, 178, 1)
+            Height: =88
+            Width: =Parent.Width
+      - LblAppName2:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Lato Black'
+            Height: =88
+            Size: =32
+            Text: ="Datatable Demo"
+            Width: =Parent.Width
+      - Canvas2:
+          Control: FluidGrid@2.3.0
+          Properties:
+            BorderThickness: =0
+            Height: =Parent.Height - Self.Y
+            Width: =Parent.Width
+            Y: =RectQuickActionBar2.Y + RectQuickActionBar2.Height
+          Children:
+            - DataCard2:
+                Control: DataCard@1.0.2
+                Properties:
+                  Height: =Parent.Height - 100
+                  Width: =Parent.Width
+                  X: =0
+                  Y: =0
+                Children:
+                  - DataTable1:
+                      Control: DataTable@1.0.3
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Font: =Font.'Open Sans'
+                        HeadingColor: =RGBA(255, 255, 255, 1)
+                        HeadingFill: =RGBA(56, 96, 178, 1)
+                        HeadingFont: =Font.'Open Sans'
+                        Height: =472
+                        HoverFill: =RGBA(186, 202, 226, .2)
+                        Items: =Leaves
+                        SelectedFill: =RGBA(56, 96, 178, .2)
+                        Width: =1297
+                        X: =40
+                        Y: =40
+                      Children:
+                        - Title_Column1:
+                            Control: DataTableColumn@1.0.1
+                            Variant: Textual
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="Title"
+                              FieldName: ="Title"
+                              Order: =1
+                              Text: =ThisItem.Title
+                        - Start_Date_Column1:
+                            Control: DataTableColumn@1.0.1
+                            Variant: Textual
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="Start_Date"
+                              FieldName: ="Start_Date"
+                              Order: =7
+                              Text: =ThisItem.Start_Date
+                        - End_Date_Column1:
+                            Control: DataTableColumn@1.0.1
+                            Variant: Textual
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="End_Date"
+                              FieldName: ="End_Date"
+                              Order: =8
+                              Text: =ThisItem.End_Date
+                        - No Of Days_Column1:
+                            Control: DataTableColumn@1.0.1
+                            Variant: Textual
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="No Of Days"
+                              FieldName: ="No_x0020_Of_x0020_Days"
+                              Order: =9
+                              Text: =ThisItem.'No Of Days'
+                        - Leave_Status_Column1:
+                            Control: DataTableColumn@1.0.1
+                            Variant: Textual
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="Leave_Status"
+                              FieldName: ="Leave_Status"
+                              Order: =4
+                              Text: =ThisItem.Leave_Status.Value
+                        - Leave_Type_Column1:
+                            Control: DataTableColumn@1.0.1
+                            Variant: Textual
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="Leave_Type"
+                              FieldName: ="Leave_Type"
+                              Order: =3
+                              Text: =ThisItem.Leave_Type.Value
+                        - Department_Column1:
+                            Control: DataTableColumn@1.0.1
+                            Variant: Textual
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="Department"
+                              FieldName: ="Department"
+                              Order: =5
+                              Text: =ThisItem.Department.Value
+                        - Manager_Column1:
+                            Control: DataTableColumn@1.0.1
+                            Variant: Textual
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="Manager"
+                              FieldName: ="Manager"
+                              Order: =6
+                              Text: =ThisItem.Manager.DisplayName
+                        - Select_Type_Column1:
+                            Control: DataTableColumn@1.0.1
+                            Variant: Textual
+                            IsLocked: true
+                            Properties:
+                              FieldDisplayName: ="Select_Type"
+                              FieldName: ="Select_Type"
+                              Order: =2
+                              Text: =ThisItem.Select_Type.Value

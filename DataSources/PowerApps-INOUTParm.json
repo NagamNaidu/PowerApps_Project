@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "27daa598-34cc-44f2-b63d-9798616850a9",
+    "Name": "PowerApps-INOUTParm",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "2f7c9fc3-9d8c-f011-b4cb-7ced8da03204"
+  }
+]

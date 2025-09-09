@@ -1,0 +1,172 @@
+"Screen3 As screen.'phoneLayout_FluidGridWithHeaderPageLayout_ver3.0'":
+
+    RectQuickActionBar2 As rectangle:
+        Height: =88
+        Width: =Parent.Width
+        ZIndex: =1
+
+    LblAppName2 As label:
+        Align: =Align.Center
+        Font: =Font.'Lato Black'
+        Height: =88
+        Size: =32
+        Text: ="Datatable Demo"
+        Width: =Parent.Width
+        ZIndex: =2
+
+    Canvas2 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =RectQuickActionBar2.Y + RectQuickActionBar2.Height
+        ZIndex: =3
+
+        DataCard2 As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height - 100
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataTable1 As dataTable.datatable:
+                BorderStyle: =BorderStyle.Solid
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =472
+                Items: =Leaves
+                Width: =1297
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+                Title_Column1 As dataTableColumn.textualColumn:
+                    DisplayMode: =DisplayMode.Edit
+                    FieldDisplayName: ="Title"
+                    FieldName: ="Title"
+                    FieldVariantName: ="textualColumn"
+                    Height: =Parent.Height
+                    LayoutHeight: =Parent.Height
+                    Order: =1
+                    Text: =ThisItem.Title
+                    Width: =100
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                Start_Date_Column1 As dataTableColumn.textualColumn:
+                    DisplayMode: =DisplayMode.Edit
+                    FieldDisplayName: ="Start_Date"
+                    FieldName: ="Start_Date"
+                    FieldVariantName: ="textualColumn"
+                    Height: =Parent.Height
+                    LayoutHeight: =Parent.Height
+                    Order: =7
+                    Text: =ThisItem.Start_Date
+                    Width: =100
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+                End_Date_Column1 As dataTableColumn.textualColumn:
+                    DisplayMode: =DisplayMode.Edit
+                    FieldDisplayName: ="End_Date"
+                    FieldName: ="End_Date"
+                    FieldVariantName: ="textualColumn"
+                    Height: =Parent.Height
+                    LayoutHeight: =Parent.Height
+                    Order: =8
+                    Text: =ThisItem.End_Date
+                    Width: =100
+                    X: =0
+                    Y: =0
+                    ZIndex: =3
+
+                "'No Of Days_Column1' As dataTableColumn.textualColumn":
+                    DisplayMode: =DisplayMode.Edit
+                    FieldDisplayName: ="No Of Days"
+                    FieldName: ="No_x0020_Of_x0020_Days"
+                    FieldVariantName: ="textualColumn"
+                    Height: =Parent.Height
+                    LayoutHeight: =Parent.Height
+                    Order: =9
+                    Text: =ThisItem.'No Of Days'
+                    Width: =100
+                    X: =0
+                    Y: =0
+                    ZIndex: =4
+
+                Leave_Status_Column1 As dataTableColumn.textualColumn:
+                    DisplayMode: =DisplayMode.Edit
+                    FieldDisplayName: ="Leave_Status"
+                    FieldName: ="Leave_Status"
+                    FieldVariantName: ="textualColumn"
+                    Height: =Parent.Height
+                    LayoutHeight: =Parent.Height
+                    Order: =4
+                    Text: =ThisItem.Leave_Status.Value
+                    Width: =100
+                    X: =0
+                    Y: =0
+                    ZIndex: =5
+
+                Leave_Type_Column1 As dataTableColumn.textualColumn:
+                    DisplayMode: =DisplayMode.Edit
+                    FieldDisplayName: ="Leave_Type"
+                    FieldName: ="Leave_Type"
+                    FieldVariantName: ="textualColumn"
+                    Height: =Parent.Height
+                    LayoutHeight: =Parent.Height
+                    Order: =3
+                    Text: =ThisItem.Leave_Type.Value
+                    Width: =100
+                    X: =0
+                    Y: =0
+                    ZIndex: =6
+
+                Department_Column1 As dataTableColumn.textualColumn:
+                    DisplayMode: =DisplayMode.Edit
+                    FieldDisplayName: ="Department"
+                    FieldName: ="Department"
+                    FieldVariantName: ="textualColumn"
+                    Height: =Parent.Height
+                    LayoutHeight: =Parent.Height
+                    Order: =5
+                    Text: =ThisItem.Department.Value
+                    Width: =100
+                    X: =0
+                    Y: =0
+                    ZIndex: =7
+
+                Manager_Column1 As dataTableColumn.textualColumn:
+                    DisplayMode: =DisplayMode.Edit
+                    FieldDisplayName: ="Manager"
+                    FieldName: ="Manager"
+                    FieldVariantName: ="textualColumn"
+                    Height: =Parent.Height
+                    LayoutHeight: =Parent.Height
+                    Order: =6
+                    Text: =ThisItem.Manager.DisplayName
+                    Width: =100
+                    X: =0
+                    Y: =0
+                    ZIndex: =8
+
+                Select_Type_Column1 As dataTableColumn.textualColumn:
+                    DisplayMode: =DisplayMode.Edit
+                    FieldDisplayName: ="Select_Type"
+                    FieldName: ="Select_Type"
+                    FieldVariantName: ="textualColumn"
+                    Height: =Parent.Height
+                    LayoutHeight: =Parent.Height
+                    Order: =2
+                    Text: =ThisItem.Select_Type.Value
+                    Width: =100
+                    X: =0
+                    Y: =0
+                    ZIndex: =9
+

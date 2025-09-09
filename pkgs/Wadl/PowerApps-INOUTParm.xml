@@ -1,0 +1,68 @@
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:service="https://india-001.azure-apim.net/apim/logicflows" xmlns:siena="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11" siena:serviceId="PowerApps-INOUTParm" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="PowerApps-INOUTParm" />
+  <grammars>
+    <jsonTypes targetNamespace="https://india-001.azure-apim.net/apim/logicflows" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+      <string name="ManualTriggerInput_text_def" />
+      <string name="ManualTriggerInput_email_def" />
+      <number name="ManualTriggerInput_number_def" />
+      <string name="ManualTriggerInput_date_def" />
+      <object name="ManualTriggerInput">
+        <property name="text" type="string" />
+        <property name="email" type="string" />
+        <property name="number" type="number" />
+        <property name="date" type="string" />
+      </object>
+      <string name="ResponseActionOutput_vtextop_def" />
+      <boolean name="ResponseActionOutput_vsuccess_def" />
+      <string name="ResponseActionOutput_vemail_def" />
+      <number name="ResponseActionOutput_vnum_def" />
+      <string name="ResponseActionOutput_vdate_def" />
+      <object name="ResponseActionOutput">
+        <property name="vtextop" type="string" />
+        <property name="vsuccess" type="boolean" />
+        <property name="vemail" type="string" />
+        <property name="vnum" type="number" />
+        <property name="vdate" type="string" />
+      </object>
+      <object name="Run_responses_default_def" />
+    </jsonTypes>
+  </grammars>
+  <resources siena:authenticationProviderHref="#PowerAppAuth" base="https://india-001.azure-apim.net/apim/logicflows">
+    <resource path="/{connectionId}/triggers/manual/run">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="POST" id="Run">
+        <doc title="Runs a logic flow trigger." />
+        <request>
+          <param style="query" name="api-version" type="xs:string" required="true" fixed="2015-02-01-preview">
+            <doc title="The api version" />
+          </param>
+          <representation mediaType="application/json">
+            <param style="plain" name="text" path="/text" type="xs:string" required="true">
+              <doc title="vtextop" />
+            </param>
+            <param style="plain" name="email" path="/email" type="xs:string" required="true">
+              <doc title="vEmail" />
+            </param>
+            <param style="plain" name="number" path="/number" type="xs:double" required="true">
+              <doc title="vPhone" />
+            </param>
+            <param style="plain" name="date" path="/date" type="xs:string" required="true">
+              <doc title="vDate" />
+            </param>
+          </representation>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="service:ResponseActionOutput" />
+        </response>
+      </method>
+    </resource>
+  </resources>
+  <authenticationProviders xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <connectionProvider id="PowerAppAuth" siena:connectionProviderId="logicflows" />
+  </authenticationProviders>
+  <template xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <variable name="connectionId">
+      <modifyParams style="template" name="connectionId" attribute="fixed" />
+    </variable>
+  </template>
+</application>

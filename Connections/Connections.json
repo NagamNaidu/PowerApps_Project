@@ -1,0 +1,72 @@
+{
+  "1a985a6b-34e3-4911-b613-45b2267679a1": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1766/1.0.1766.4325/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowDisplayName": {
+          "value": "PowerApps-INOUTParm"
+        },
+        "workflowEntityId": {
+          "value": "2f7c9fc3-9d8c-f011-b4cb-7ced8da03204"
+        },
+        "workflowName": {
+          "value": "605f5e79-5404-3d42-f2ef-9befd00db4aa"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowDisplayName": {
+          "value": "PowerApps-INOUTParm"
+        },
+        "workflowEntityId": {
+          "value": "2f7c9fc3-9d8c-f011-b4cb-7ced8da03204"
+        },
+        "workflowName": {
+          "value": "605f5e79-5404-3d42-f2ef-9befd00db4aa"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "PowerApps-INOUTParm"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "1a985a6b-34e3-4911-b613-45b2267679a1"
+  },
+  "e28a309b-f4c1-4b90-af40-8a4f08911428": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1762/1.0.1762.4298/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://lyrostech.sharepoint.com/sites/YT_Leaves": {
+        "dataSources": {
+          "Approval": {
+            "tableName": "9d23dd47-6661-4158-926c-37f586ba60db"
+          },
+          "Leaves": {
+            "tableName": "9766eeff-dc29-4079-8853-d47f84bc916e"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Leaves",
+      "Approval"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "e28a309b-f4c1-4b90-af40-8a4f08911428"
+  }
+}

@@ -1,0 +1,318 @@
+"'Screen2_1_Filter/search' As screen.'phoneLayout_FluidGridWithHeaderPageLayout_ver3.0'":
+    OnVisible: |+
+        =ClearCollect(
+            Header,
+            {
+                Description: "Leave Description",
+                LeaveType: "Leave Type",
+                SelectType: "Planned / UnPlanned",
+                Manager: "Manager",
+                SD: "Start Date",
+                ED: "End Date",
+                Days: "No Of Days",
+                LeaveStatus: "Leave Status",
+                Dept: "Department",
+                Action: "Action"
+            }
+        );
+        
+        ClearCollect(
+            LeaveType,
+            {Value:"All Leaves"},
+            Choices([@Leaves].Leave_Type)
+        );
+        ClearCollect(
+            DeptChoices,
+            {Value: "All Departments"},
+            Choices([@Leaves].Department)
+        );
+        ClearCollect(
+            StatusChoices,
+            {Value: "All Statuses"},
+            Choices([@Leaves].Leave_Status)
+        );
+        ClearCollect(
+            SelectChoices,
+            {Value: "All Types"},
+            Choices([@Leaves].Select_Type)
+        );
+        
+
+    RectQuickActionBar1_1 As rectangle:
+        Height: =88
+        Width: =Parent.Width
+        ZIndex: =1
+
+    LblAppName1_1 As label:
+        Align: =Align.Center
+        Font: =Font.'Lato Black'
+        Height: =88
+        Size: =32
+        Text: ="View My Application"
+        Width: =Parent.Width
+        ZIndex: =2
+
+    Canvas1_1 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =RectQuickActionBar1_1.Y + RectQuickActionBar1_1.Height
+        ZIndex: =3
+
+        DataCard1_1 As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height - 100
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            Gallery3_1 As gallery.galleryVertical:
+                '#CopilotOverlayLabel': ="Filtered"
+                DelayItemLoading: =true
+                Height: =86
+                Items: =Header
+                Layout: =Layout.Vertical
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplateSize: =67
+                Width: =1287
+                X: =32
+                Y: =92
+                ZIndex: =2
+
+                Label20_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Description
+                    Y: =27
+                    ZIndex: =3
+
+                Label21_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.SelectType
+                    X: =107
+                    Y: =27
+                    ZIndex: =4
+
+                Label22_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.LeaveStatus
+                    X: =250
+                    Y: =27
+                    ZIndex: =5
+
+                Label23_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Manager
+                    X: =400
+                    Y: =27
+                    ZIndex: =6
+
+                Label24_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.SD
+                    X: =501
+                    Y: =27
+                    ZIndex: =7
+
+                Label25_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.ED
+                    X: =629
+                    Y: =27
+                    ZIndex: =8
+
+                Label26_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Days
+                    X: =733
+                    Y: =27
+                    ZIndex: =9
+
+                Label27_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.LeaveType
+                    X: =872
+                    Y: =27
+                    ZIndex: =10
+
+                Label28_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Dept
+                    X: =1002
+                    Y: =27
+                    ZIndex: =11
+
+                Label29_1 As label:
+                    Fill: =RGBA(215, 223, 240, 1)
+                    Font: =Font.'Lato Black'
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Action
+                    Width: =125
+                    X: =1152
+                    Y: =27
+                    ZIndex: =12
+
+            TextInputSearch As text:
+                Default: =
+                HintText: ="Search Description"
+                X: =40
+                Y: =40
+                ZIndex: =3
+
+            DropdownLeave_Type As dropdown:
+                Items: =LeaveType
+                Width: =200
+                X: =387
+                Y: =40
+                ZIndex: =4
+
+            DropdownSelect_Type As dropdown:
+                Items: =SelectChoices
+                Width: =200
+                X: =614
+                Y: =40
+                ZIndex: =5
+
+            DropdownDepartment As dropdown:
+                Items: =DeptChoices
+                Width: =200
+                X: =846
+                Y: =40
+                ZIndex: =6
+
+            DropdownLeave_Status As dropdown:
+                Items: =StatusChoices
+                Width: =200
+                X: =1088
+                Y: =40
+                ZIndex: =7
+
+            Gallery1_1 As gallery.galleryVertical:
+                '#CopilotOverlayLabel': ="Filtered"
+                DelayItemLoading: =true
+                Height: =346
+                Items: |
+                    =Filter(
+                        Leaves,
+                        // Leave Type filter
+                        Substitute(DropdownLeave_Type.Selected.Value, "All Leaves", "") in Leave_Type.Value,
+                    
+                        // Department filter
+                        Substitute(DropdownDepartment.Selected.Value, "All Departments", "") in Department.Value,
+                    
+                        // Leave Status filter
+                        Substitute(DropdownLeave_Status.Selected.Value, "All Statuses", "") in Leave_Status.Value,
+                    
+                        // Planned/Unplanned (Types)
+                        If(
+                            DropdownSelect_Type.Selected.Value = "All Types",
+                            true,
+                            DropdownSelect_Type.Selected.Value = Select_Type.Value
+                        ),
+                    
+                        // Search box
+                        Or(
+                            TextInputSearch.Text in Title,
+                            TextInputSearch.Text in Manager.DisplayName
+                        ),
+                        'Created By'.Email = User().Email
+                    )
+                Layout: =Layout.Vertical
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplateSize: =94
+                Width: =1298
+                X: =32
+                Y: =199
+                ZIndex: =13
+
+                Label1_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Title
+                    Y: =40
+                    ZIndex: =14
+
+                Label2_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Select_Type.Value
+                    X: =150
+                    Y: =40
+                    ZIndex: =15
+
+                Label3_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Leave_Status.Value
+                    X: =284
+                    Y: =40
+                    ZIndex: =16
+
+                Label5_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Manager.DisplayName
+                    X: =424
+                    Y: =40
+                    ZIndex: =17
+
+                Label4_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Start_Date
+                    X: =516
+                    Y: =40
+                    ZIndex: =18
+
+                Label6_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.End_Date
+                    X: =631
+                    Y: =40
+                    ZIndex: =19
+
+                Label7_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.'No Of Days'
+                    X: =749
+                    Y: =40
+                    ZIndex: =20
+
+                Label8_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Leave_Type.Value
+                    X: =849
+                    Y: =40
+                    ZIndex: =21
+
+                Label9_1 As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Department.Value
+                    X: =999
+                    Y: =40
+                    ZIndex: =22
+
+                Button4_1 As button:
+                    OnSelect: =Select(Parent)
+                    Text: ="Edit"
+                    X: =1097
+                    Y: =40
+                    ZIndex: =23
+
